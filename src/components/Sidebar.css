@@ -1,0 +1,12 @@
+.flex-column {
+    background-color: greenyellow;
+}
+.nav-link{
+    padding:0 0 10px 0 !important;
+}
+.sidebar{
+    max-width: 81px;
+}
+.button-logout:hover{
+    color: white !important;
+}
