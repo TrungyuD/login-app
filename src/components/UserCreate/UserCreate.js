@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
+import {Row, Col} from 'react-bootstrap';
 import Hello from '../Hello.js';
-// import Logout from '../Logout.js';
 import Sidebar from '../Sidebar.js';
-import Role from './Role.js';
-import {Row,Col} from 'react-bootstrap';
-class ManageRole extends Component {
+import Create from './Create.js';
+class UserCreate extends Component {
     render() {
         return (
             <div>
@@ -13,8 +12,8 @@ class ManageRole extends Component {
                     <Col xs={2}>
                         <Sidebar />
                     </Col>
-                    <Col xs={10}>
-                        <Role />
+                    <Col xs={10} >
+                        <Create />
                     </Col>
                 </Row>
             </div>
@@ -22,4 +21,4 @@ class ManageRole extends Component {
     }
 }
 
-export default ManageRole;
+export default UserCreate;

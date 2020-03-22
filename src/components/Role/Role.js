@@ -16,6 +16,7 @@ class Role extends Component {
         fetch(url, { method: 'GET', headers:headers})
         .then(res => {
             return res.json().then((data)=>{
+                localStorage.setItem('role',JSON.stringify(data.body));
                 this.setState({
                     dataRole : data.body    
                 })
@@ -43,7 +44,7 @@ class Role extends Component {
         return (
             <div>
                 <div className="">
-                    <Table >
+                    <Table style={{marginTop:"20px"}} >
                         <thead>
                             <tr>
                             <th>Mã</th>

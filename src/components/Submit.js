@@ -19,10 +19,7 @@ export class Submit extends Component {
           [event.target.name] : event.target.value
         });
       }
-      setUser = (params,acToken,tokenType,isRender) =>{
-        this.props.onDisplayUser(params,acToken,tokenType,isRender);
-        // console.log(params);
-      }
+      
       handleSubmit=(event)=> {
         
         var {uname,psw} = this.state;
@@ -48,11 +45,13 @@ export class Submit extends Component {
               localStorage.setItem('access_token',data.access_token);
               localStorage.setItem('token_type',data.token_type);
               localStorage.setItem('username',uname);
-              return this.setUser(this.state.uname,data.access_token,data.token_type,'none');
+              this.props.history.push('/user-list');
+              // return this.setUser(this.state.uname,data.access_token,data.token_type,'none');
             }); 
           }
         })
         .catch(error => console.error('Error:', error))
+        
       }
         
     render() {

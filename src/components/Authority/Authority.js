@@ -45,7 +45,7 @@ class Authority extends Component {
         return (
             <div>
                 <div className="">
-                    <Table >
+                    <Table style={{marginTop:"20px"}}>
                         <thead>
                             <tr>
                             <th>Mã</th>

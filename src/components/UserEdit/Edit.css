@@ -1,0 +1,26 @@
+.col-form{
+    display: flex;
+    justify-content: space-between;
+}
+.text-form-name {
+    min-width: 120px;
+    margin-top: 15px;
+}
+form{
+    border: none;
+}
+.name-input:focus{
+    border: none !important;
+}
+.select-status{
+    width: 86%;
+}
+.dropdown-button{
+    border: 1px solid #ced4da;
+    /* width: 300px; */
+}
+.button-submit-edit{
+    margin-top: 20px;
+    width: 300px;
+    
+}

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ListUserTable from './ListUserTable.js';
-import UserInfo from './UserInfo.js';
+// import UserInfo from './UserInfo.js';
 import Hello from '../Hello.js';
-import Logout from '../Logout.js';
+// import Logout from '../Logout.js';
 import Sidebar from '../Sidebar.js';
 import {Row,Col} from 'react-bootstrap';
 class UserList extends Component {
@@ -23,18 +23,12 @@ class UserList extends Component {
         return (
             <div>
                 <Hello />
-                <Logout />
                 <Row>
-                    <Col xs={1}>
+                    <Col xs={2}>
                         <Sidebar />
-                        
-                        
                     </Col>
-                    <Col xs={4}>
-                        <ListUserTable  displayUserInfo={this.setUserInfo}/>
-                    </Col>
-                    <Col xs={7}>
-                        <UserInfo onDisplayInfo={this.state.userDisplayInfo} />
+                    <Col xs={10} >
+                        <ListUserTable />
                     </Col>
                 </Row>
             </div>

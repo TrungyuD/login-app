@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Hello from '../Hello.js';
-import Logout from '../Logout.js';
+// import Logout from '../Logout.js';
 import Sidebar from '../Sidebar.js';
 import Authority from './Authority.js';
 import {Row,Col} from 'react-bootstrap';
@@ -9,12 +9,11 @@ class ManageAuthority extends Component {
         return (
             <div>
                 <Hello />
-                <Logout />
                 <Row>
-                    <Col xs={1}>
+                    <Col xs={2}>
                         <Sidebar />
                     </Col>
-                    <Col xs={11}>
+                    <Col xs={10}>
                         <Authority />
                     </Col>
                 </Row>

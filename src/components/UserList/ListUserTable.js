@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Table} from 'react-bootstrap';
+import {withRouter} from 'react-router-dom';
+// import { browserHistory } from 'react-router';
 class ListUserTable extends Component {
     constructor(props) {
         super(props);
@@ -8,6 +10,8 @@ class ListUserTable extends Component {
         }
     }
     UNSAFE_componentWillMount(){
+        console.log('list user table');
+        
         const getTokenType = localStorage.getItem('token_type');
         const getAccessToken = localStorage.getItem('access_token');
         const url = 'http://test.itechcorp.com.vn:38765/auth/secured/ws/rest/v1/user';
@@ -16,11 +20,13 @@ class ListUserTable extends Component {
         fetch(url, { method: 'GET', headers:headers})
         .then(res => {
             return res.json().then((data)=>{
+                // console.log(JSON.stringify(data.body));
+                
                 this.setState({
                     dataUserInfo : data.body    
                 })
                 // console.log(this.state.dataUserInfo);
-                return
+                
             })
             // console.log(res.json());
         })
@@ -30,7 +36,9 @@ class ListUserTable extends Component {
         return dataUserInfo.map((value,key)=>
         {
             if(value.person !==null){
-                return <tr className="choose-user" key={key} onClick={()=> {
+                // console.log(value);
+                
+                return <tr className="choose-user" style={{textAlign:"center"}} key={key} onClick={()=> {
                     this.onDislayInfo(value);
                 }}>
                 <td>{value.id}</td>
@@ -43,14 +51,15 @@ class ListUserTable extends Component {
         );
     }
     onDislayInfo = (params) => {
-        console.log(params);
-        this.props.displayUserInfo(params);
+        // console.log(params);
+        localStorage.setItem('user-info',JSON.stringify(params));
+       this.props.history.push('/user-list/user-info');
     }
     render() {
         return (
             <div>
                 <div className="table-list-user">
-                    <Table style={{maxWidth:"500px"}}>
+                    <Table style={{marginTop:"20px" }}>
                         <thead>
                             <tr>
                             <th>id</th>
@@ -59,7 +68,7 @@ class ListUserTable extends Component {
                             <th>Phone</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody >
                             {this.getData()}
                         </tbody>
                     </Table>
@@ -69,4 +78,4 @@ class ListUserTable extends Component {
     }
 }
 
-export default ListUserTable;
+export default withRouter(ListUserTable);

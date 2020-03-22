@@ -1,9 +1,9 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import Submit from './components/Submit.js';
+// import Submit from './components/Submit.js';
 import Hello from './components/Hello.js';
-import Logout from './components/Logout';
+// import Logout from './components/Logout';
 import Sidebar from './components/Sidebar.js';
 class App extends React.Component {
   constructor(props) {
@@ -25,29 +25,15 @@ class App extends React.Component {
         token_type : tokenType,
         renderSubmit : isRender
     })}
-    showLogout = () => {
-      if(this.state.displayUser) {
-        return <Logout onLogout={this.onSetLogout}/>
-      }
-    }
-    showSideBar = () => {
-      if(this.state.displayUser) {
-        return <div>
-            <Sidebar />
-        </div>
-      }
-    }
+    
   render(){
     return (
       <div className="App">
         <Hello />
         <div>
-          {this.showLogout()}
+          <Sidebar />
         </div>
-        <Submit onDisplayUser={this.onSetUser}
-                    onDisplaySubmit={this.state.renderSubmit} />
         <div>
-          {this.showSideBar()}
         </div>
         
       </div>
