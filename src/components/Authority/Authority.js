@@ -44,7 +44,7 @@ class Authority extends Component {
     render() {
         return (
             <div>
-                <div className="">
+                <div className="overflow-top-table">
                     <Table style={{marginTop:"20px"}}>
                         <thead>
                             <tr>

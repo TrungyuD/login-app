@@ -1,10 +1,8 @@
 import React from 'react';
-// import logo from './logo.svg';
-import './App.css';
-// import Submit from './components/Submit.js';
-import Hello from './components/Hello.js';
-// import Logout from './components/Logout';
-import Sidebar from './components/Sidebar.js';
+import { Switch, Route } from 'react-router-dom';
+// import App from './App.js';
+import Submit from './components/Submit.js';
+import Menu from './components/Menu.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -14,33 +12,22 @@ class App extends React.Component {
       access_token:'',
       token_type:'',
       userDisplayInfo : {},
-      renderSubmit : 'block'
+      renderSubmit : 'block',
+      renderComponents: 'none'
     }
   }
-  onSetUser = (params,acToken,tokenType,isRender)=>{
-    this.setState({
-        userInfo : params,
-        displayUser :true,
-        access_token:acToken,
-        token_type : tokenType,
-        renderSubmit : isRender
-    })}
-    
   render(){
     return (
       <div className="App">
-        <Hello />
-        <div>
-          <Sidebar />
-        </div>
-        <div>
-        </div>
-        
+           <div>
+              <Switch>
+                  <Route exact path='/' component={Submit} />
+                  <Menu />
+              </Switch>
+            </div>
       </div>
     )
   }
   
 }
-
-
 export default App;

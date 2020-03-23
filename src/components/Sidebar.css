@@ -1,3 +1,6 @@
 .w3-button:hover{
     text-decoration: none;
 }
+.active{
+    background-color: #C3BFBC;
+}

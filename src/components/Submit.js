@@ -40,20 +40,21 @@ export class Submit extends Component {
         headers:headers})
         .then(res => {
           if (res.status === 200) {
-            
             return res.json().then((data) => {  
               localStorage.setItem('access_token',data.access_token);
               localStorage.setItem('token_type',data.token_type);
               localStorage.setItem('username',uname);
               this.props.history.push('/user-list');
-              // return this.setUser(this.state.uname,data.access_token,data.token_type,'none');
+              return this.setUser('none','block');
             }); 
           }
         })
         .catch(error => console.error('Error:', error))
         
       }
-        
+      setUser = (params1,params2) => {
+        this.props.setDisplay(params1,params2);
+      } 
     render() {
         // var {render} = this.state;
         return (

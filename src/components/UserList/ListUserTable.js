@@ -10,8 +10,6 @@ class ListUserTable extends Component {
         }
     }
     UNSAFE_componentWillMount(){
-        console.log('list user table');
-        
         const getTokenType = localStorage.getItem('token_type');
         const getAccessToken = localStorage.getItem('access_token');
         const url = 'http://test.itechcorp.com.vn:38765/auth/secured/ws/rest/v1/user';
@@ -58,7 +56,7 @@ class ListUserTable extends Component {
     render() {
         return (
             <div>
-                <div className="table-list-user">
+                <div className="table-list-user overflow-top-table">
                     <Table style={{marginTop:"20px" }}>
                         <thead>
                             <tr>

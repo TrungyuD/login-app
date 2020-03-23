@@ -30,25 +30,24 @@ class Edit extends Component {
         const {role} =this.state;
         return role.map((value,key) => {
             return <option key={key} className="item-room-choice" 
-                onClick={() => this.changeRoleValue(value.id,value.name)}>
+                            value={value.id} >
                 {value.name}
             </option>
         })
     }
-    changeRoleValue = (id,name) => {
+    changeRoleValue = (event) => {
+        console.log(event.target.value);
         this.setState({
-            select : name,
-            roleId : [id]
+            roleId : [event.target.value]
         })
-        console.log(JSON.stringify(this.state.roleId));
-        
     }
     handleChange = (event) => {
         this.setState({
           [event.target.name] : event.target.value
         });
+        // console.log(event.target.value );
       }
-      onHandleSubmit = () => {
+    onHandleSubmit = () => {
         var dataRole = {} ;
         const {username,email,phone,roleId} =this.state;
         dataRole.username = username;
@@ -80,7 +79,7 @@ class Edit extends Component {
                     
                 </div>
                 <div className="table-user">
-                    <Form action="" onSubmit={this.handleSubmit}>
+                    <Form action="" style={{border:"none"}} onSubmit={this.handleSubmit}>
                         <Form.Group as={Row} controlId="formPlaintextEmail">
                             <Form.Label column sm="2">
                                 Tên đăng nhập
@@ -108,7 +107,7 @@ class Edit extends Component {
                         <Form.Group as={Row} controlId="formGridState">
                             <Form.Label column sm="2">Vai trò</Form.Label>
                             <Col sm="10">
-                                <Form.Control as="select" value="" >
+                                <Form.Control as="select" name="select" onChange={this.changeRoleValue}>
                                     {this.getRoleData()}
                                 </Form.Control>
                             </Col>                       

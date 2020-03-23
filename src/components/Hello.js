@@ -25,8 +25,8 @@ export class Hello extends Component {
     render() {
         return (
            <div>
-               <div style={{backgroundColor:"#C3BFBC"}}>
-                    <Navbar style={{backgroundColor:"#C3BFBC"}}>
+               <div className="" style={{backgroundColor:"#C3BFBC"}}>
+                    <Navbar fixed="top" style={{backgroundColor:"#C3BFBC",marginBottom:"300px"}}>
                         <Navbar.Brand href="/home">
                             <img className="logo" alt="logo" src="http://www.itechcorp.com.vn/wp-content/uploads/2019/03/xlogo-itech.png.pagespeed.ic.WcLBlatR2n.webp" />
                         </Navbar.Brand>

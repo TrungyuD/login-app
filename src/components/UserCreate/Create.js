@@ -52,7 +52,7 @@ class Create extends Component {
                         
                     </div>
                     <div className="table-user">
-                        <Form >
+                        <Form style={{border:"none"}}>
                             <Form.Group as={Row} controlId="formPlaintextEmail">
                                 <Form.Label column sm="2">
                                     Tên đăng nhập
@@ -66,7 +66,7 @@ class Create extends Component {
                                     Mật khẩu
                                 </Form.Label>
                                 <Col sm="10">
-                                <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleChange} defaultValue={this.state.phone} />
+                                <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleChange}  />
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row} controlId="formPlaintextEmail">
