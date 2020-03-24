@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import {Row, Col} from 'react-bootstrap';
 import ListUserTable from './UserList/ListUserTable.js';
@@ -9,8 +9,7 @@ import Edit from './UserEdit/Edit.js';
 import Create from './UserCreate/Create.js';
 import Role from './Role/Role.js';
 import Authority from './Authority/Authority.js';
-class Menu extends Component {
-    render() {
+function Menu() {
         return (
             <div>
                 <Hello />
@@ -32,6 +31,4 @@ class Menu extends Component {
             </div>
         );
     }
-}
-
 export default Menu;

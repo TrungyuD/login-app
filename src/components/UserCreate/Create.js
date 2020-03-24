@@ -1,41 +1,34 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import {  Form, Button, Row, Col } from 'react-bootstrap';
-class Create extends Component {
-    constructor(props) {
-        super(props);
-        this.state= {
-            username : '',
-            email : '',
-            phone : '',
-            password : '',
-            verifyPass: '',
-            roleId : [],
-            role:[],
-            select : 'Select ...',
-        }
+function Create() {
+    const [role, setRole] =useState([]);
+    // const [roleId, setRoleId] =useState([]);
+    // const [select, setSelect]=useState('select...');
+    const [inputValues, setInputValues] = useState({
+        username: '', email: '', phone: '', password:'',verifyPass:''
+      });
+      const [roleId, setRoleId] =useState(["modality_resource_manager"]);
+      const changeRoleValue = (event) => {
+        console.log(event.target.value);
+        setRoleId([event.target.value]);
     }
-    UNSAFE_componentWillMount(){
-        const role = JSON.parse(localStorage.getItem('role'));
-        return this.setState({
-            role : role
-        })
-    }
-    getRoleData = () => {
-        const {role} =this.state;
-        return role.map((value,key) => {
-            return <option key={key} className="item-room-choice" 
-                onClick={(e) => this.changeRoleValue(value.id,value.name)}>
-                {value.name}
-            </option>
-        })
-    }
-    handleChange = (event) => {
-        this.setState({
-          [event.target.name] : event.target.value
-        });
-      }
-      handleSubmit = () => {
-          const {password, verifyPass} =this.state;
+    // const roleLocal = JSON.parse(localStorage.getItem('role'));
+    // const incre = () => setRole(roleLocal);
+    useEffect(()=>{
+        const roleLocal = JSON.parse(localStorage.getItem('role'));
+        // debugger;
+        if (roleLocal!=null) {
+            return setRole(roleLocal);
+         }
+    },[]);
+    const handleChange = event => {
+        const { name, value } = event.target;
+        // debugger;
+        setInputValues({ ...inputValues, [name]: value });
+      };
+      const handleSubmit = () => {
+          const password=inputValues.password;
+          const verifyPass=inputValues.verifyPass;
           if (password !== verifyPass){
               alert('Xác nhận mật khẩu không đúng');
           }
@@ -43,7 +36,6 @@ class Create extends Component {
               alert('oke');
           }
       }
-    render() {
         return (
             <div>
                 <div style={{marginTop:"30px"}}>
@@ -58,7 +50,7 @@ class Create extends Component {
                                     Tên đăng nhập
                                 </Form.Label>
                                 <Col sm="10">
-                                <Form.Control name="username" value={this.state.username} onChange={this.handleChange} defaultValue={this.state.username} />
+                                <Form.Control name="username" value={inputValues.username} onChange={handleChange} />
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row} controlId="formPlaintextEmail">
@@ -66,7 +58,7 @@ class Create extends Component {
                                     Mật khẩu
                                 </Form.Label>
                                 <Col sm="10">
-                                <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleChange}  />
+                                <Form.Control type="password" name="password" value={inputValues.password} onChange={handleChange}  />
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row} controlId="formPlaintextEmail">
@@ -74,7 +66,7 @@ class Create extends Component {
                                     Xác thực mật khẩu
                                 </Form.Label>
                                 <Col sm="10">
-                                <Form.Control type="password" name="verifyPass" value={this.state.verifyPass} onChange={this.handleChange}  />
+                                <Form.Control type="password" name="verifyPass" value={inputValues.verifyPass} onChange={handleChange}  />
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row} controlId="formPlaintextEmail">
@@ -82,7 +74,7 @@ class Create extends Component {
                                     Email
                                 </Form.Label>
                                 <Col sm="10">
-                                <Form.Control name="email" value={this.state.email} onChange={this.handleChange} />
+                                <Form.Control name="email" value={inputValues.email} onChange={handleChange} />
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row} controlId="formPlaintextEmail">
@@ -90,20 +82,25 @@ class Create extends Component {
                                     SĐT
                                 </Form.Label>
                                 <Col sm="10">
-                                <Form.Control name="phone" value={this.state.phone} onChange={this.handleChange}  />
+                                <Form.Control name="phone" value={inputValues.phone} onChange={handleChange}  />
                                 </Col>
                             </Form.Group>
                             
                             <Form.Group as={Row} controlId="formGridState">
-                                <Form.Label column sm="2">State</Form.Label>
+                                <Form.Label column sm="2">Vai trò</Form.Label>
                                 <Col sm="10">
-                                    <Form.Control as="select" value="Choose..." >
-                                        {this.getRoleData()}
+                                    <Form.Control as="select" name="select" onChange={changeRoleValue}>
+                                        {role.map((value,key) => {
+                                            return <option key={key} className="item-room-choice" 
+                                                            value={value.id} >
+                                                {value.name}
+                                            </option>
+                                        })}
                                     </Form.Control>
                                 </Col>                       
                             </Form.Group>
                             <div style={{textAlign:"center"}}>
-                                <Button  variant="success" onClick={()=>{this.handleSubmit()}} className="button-submit-edit" type="submit">
+                                <Button  variant="success" onClick={handleSubmit} className="button-submit-edit" type="submit">
                                     Submit
                                 </Button>
                             </div>
@@ -113,6 +110,4 @@ class Create extends Component {
             </div>
         );
     }
-}
-
 export default Create;

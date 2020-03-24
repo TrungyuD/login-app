@@ -3,20 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 // import App from './App.js';
 import Submit from './components/Submit.js';
 import Menu from './components/Menu.js';
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userInfo : "Bạn chưa đăng nhập",
-      displayUser: false,
-      access_token:'',
-      token_type:'',
-      userDisplayInfo : {},
-      renderSubmit : 'block',
-      renderComponents: 'none'
-    }
-  }
-  render(){
+function App() {
     return (
       <div className="App">
            <div>
@@ -27,7 +14,5 @@ class App extends React.Component {
             </div>
       </div>
     )
-  }
-  
 }
 export default App;
